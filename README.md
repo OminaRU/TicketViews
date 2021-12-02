@@ -21,5 +21,5 @@ subdomain name you choose.
 </p>
 
 # Installation & Usage Instructions
-<p id="mylink2"> The first step is to create your test tickets. These will be used as a sample reference. Save the <blockquoute tickets.json> </blockquote> file into your working directory. 
+<p id="mylink2"> The first step is to create your test tickets. These will be used as a sample reference. Save the > tickets.json file into your working directory. 
  </p>
