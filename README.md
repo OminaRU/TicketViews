@@ -4,7 +4,7 @@
 Omina Elsheikh CS @ Baruch College '23 
 
 # Contents
-[Getting Started](<p> Hello </p>) 
+[Hello](Getting Started) 
 
 [Installation]()
 
