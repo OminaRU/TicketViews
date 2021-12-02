@@ -4,13 +4,13 @@
 Omina Elsheikh CS @ Baruch College '23 
 
 # Contents
-[Getting Started]() 
-Helloooo
-[Installation]()
+1. [Getting Started]() 
 
-[Features]()
+2. [Installation]()
 
-[Routing to all tickets]()
+3. [Features]()
 
-[Routing to individual tickets]()
+4. [Routing to all tickets]()
+
+5. [Routing to individual tickets]()
 
