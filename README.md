@@ -4,7 +4,7 @@
 Omina Elsheikh CS @ Baruch College '23 
 
 # Contents
-1. [Getting Started]("mylink") 
+1. [Getting Started](#mylink) 
 
 2. [Installation & Usage Instructions]()
 
