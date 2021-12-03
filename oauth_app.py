@@ -9,7 +9,7 @@ from bottle import route, template, redirect, static_file, error, request, respo
 def show_home():
     return template('home')
 
-#routes to home page
+#routes to profile
 @route('/zendesk_profile')
 def make_request():
     if request.get_cookie('owat'):
@@ -60,7 +60,7 @@ def getTicketCounts():
             'redirect_uri': 'http://localhost:8080/handle_user_decision',
             'client_id': '',
             'scope': 'read write'}
-        url = '' + urlencode(parameters)
+        url = 'https://your_subdomain.zendesk.com/oauth/authorizations/new?' + urlencode(parameters)
         redirect(url)
 
 @route('/showTicket/<id>')
