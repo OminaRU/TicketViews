@@ -17,7 +17,7 @@ def make_request():
         access_token = request.get_cookie('owat')
         bearer_token = 'Bearer ' + access_token
         header = {'Authorization': bearer_token}
-        url = 'https://zccoestudents.zendesk.com/api/v2/users/me.json'
+        url = 'https://your_subdomain.zendesk.com/api/v2/requests.json'
         r = requests.get(url, headers=header)
         if r.status_code != 200:
             error_msg = 'Failed to get data with error {}'.format(r.status_code)
@@ -26,23 +26,23 @@ def make_request():
             data = r.json()
             return template('details', data=data)
     else:
-        # Kick off authorization flow
+        # Kicking off authorization
         parameters = {
             'response_type': 'code',
             'redirect_uri': 'http://localhost:8080/handle_user_decision',
-            'client_id': 'z',
+            'client_id': '',
             'scope': 'read write'}
-        url = 'https://zccoestudents.zendesk.com/oauth/authorizations/new?' + urlencode(parameters)
+        url = 'https://your_subdomain.zendesk.com/oauth/authorizations/new?' + urlencode(parameters)
         redirect(url)
         
 @route('/showAllTickets')
 def getTicketCounts():
     if request.get_cookie('owat'):
-        # Get user data
+        # Getting user data
         access_token = request.get_cookie('owat')
         bearer_token = 'Bearer ' + access_token
         header = {'Authorization': bearer_token}
-        url = 'https://zccoestudents.zendesk.com/api/v2/incremental/tickets/cursor.json?start_time=1532034771'
+        url = ''
         r = requests.get(url, headers=header)
         if r.status_code != 200:
             error_msg = 'Failed to get data with error {}'.format(r.status_code)
@@ -54,23 +54,23 @@ def getTicketCounts():
                 allTickets.append(ticket)
             return template('alltickets', data=allTickets)
     else:
-        # Kick off authorization flow
+        # Kicking off authorization 
         parameters = {
             'response_type': 'code',
             'redirect_uri': 'http://localhost:8080/handle_user_decision',
-            'client_id': 'z',
+            'client_id': '',
             'scope': 'read write'}
-        url = 'https://zccoestudents.zendesk.com/oauth/authorizations/new?' + urlencode(parameters)
+        url = '' + urlencode(parameters)
         redirect(url)
 
 @route('/showTicket/<id>')
 def showTicket(id):
     if request.get_cookie('owat'):
-        # Get user data
+        # Getting user data
         access_token = request.get_cookie('owat')
         bearer_token = 'Bearer ' + access_token
         header = {'Authorization': bearer_token}
-        url = 'https://zccoestudents.zendesk.com/api/v2/tickets/' + id + '.json'
+        url = 'https://your_subdomain.zendesk.com/api/v2/tickets/' + id + '.json'
         r = requests.get(url, headers=header)
         if r.status_code != 200:
             error_msg = 'Failed to get data with error {}'.format(r.status_code)
@@ -83,9 +83,9 @@ def showTicket(id):
         parameters = {
             'response_type': 'code',
             'redirect_uri': 'http://localhost:8080/handle_user_decision',
-            'client_id': 'z',
+            'client_id': '',
             'scope': 'read write'}
-        url = 'https://zccoestudents.zendesk.com/oauth/authorizations/new?' + urlencode(parameters)
+        url = 'https://your_subdomain.zendesk.com/oauth/authorizations/new?' + urlencode(parameters)
         redirect(url)
 
 
@@ -98,13 +98,13 @@ def handle_decision():
         parameters = {
             'grant_type': 'authorization_code',
             'code': request.query.code,
-            'client_id': 'z',
-            'client_secret': '0c03cc225d42ef5a70799e59f4e64186ae3027a633f1d6def85cd59796297cce',
+            'client_id': '',
+            'client_secret': '',
             'redirect_uri': 'http://localhost:8080/handle_user_decision',
             'scope': 'read'}
         payload = json.dumps(parameters)
         header = {'Content-Type': 'application/json'}
-        url = 'https://zccoestudents.zendesk.com/oauth/tokens'
+        url = 'https://your_subdomain/oauth/tokens'
         r = requests.post(url, data=payload, headers=header)
         if r.status_code != 200:
             error_msg = 'Failed to get access token with error {}'.format(r.status_code)
