@@ -10,7 +10,7 @@
       <p>  Job Status: {{data['status']}} </p>
   </body>
 
-  <button onclick="goBack()">Back to all tickets</button>
+  <button onclick="goBack()">Back to all tickets!</button>
 
 <script>
 function goBack() {
